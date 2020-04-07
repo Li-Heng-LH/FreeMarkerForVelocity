@@ -1,21 +1,21 @@
-package ${packagename};
+package $packageName;
 
-public ${className} implements Serializable {
+public $className implements Serializable {
 
  /** Serial Version UID. */
  private static final long serialVersionUID = 1L;
 
-#foreach( $property in $properties )
- private $property.fieldType $property.fieldName;
+#foreach( $attribute in $attributes )
+ private $attribute.AttributeType $attribute.AttributeName;
 #end
 
-#foreach( $property in $properties )
- public ${property.fieldType} get${property.getGetterAndSetterField()}() {
-     return this.${property.fieldName};
+#foreach( $attribute in $attributes )
+ public $attribute.AttributeType get${attribute.getGetterAndSetterString()}() {
+     return this.$attribute.AttributeName;
  }
 
- public void set${property.getGetterAndSetterField()}(${property.fieldType} ${property.fieldName}) {
-     this.${property.fieldName} = ${property.fieldName};
+ public void set${attribute.getGetterAndSetterString()}($attribute.AttributeType $attribute.AttributeName) {
+     this.$attribute.AttributeName = $attribute.AttributeName;
  }
 #end
 }
