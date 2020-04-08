@@ -50,7 +50,7 @@ public class FreeMarkerWriter {
         root.put("attributes", attributes);
 
         /* Get the template (uses cache internally) */
-        Template temp = cfg.getTemplate("class.vm");
+        Template temp = cfg.getTemplate("class.ftl");
 
         /* Merge data-model with template */
         Writer out = new StringWriter();
