@@ -23,3 +23,6 @@
 * [Baeldung Introduction to Apache Velocity](https://www.baeldung.com/apache-velocity)
 * [FreeMarker Manual](https://freemarker.apache.org/)
 * [The official extension of FreeMarker template files](https://freemarker.apache.org/docs/versions_2_1_3.html)
+* [javatpoint: JavaMail Tutorial](https://www.javatpoint.com/java-mail-api-tutorial)
+* [Google SMTP Server – How to Send Emails for Free](https://www.siteground.com/kb/google_free_smtp_server/)
+* [tutorialspoint: Java - Sending Email](https://www.tutorialspoint.com/java/java_sending_email.htm)
