@@ -39,7 +39,7 @@ public class EmailWithVelocity {
             //Set Subject: header field
             message.setSubject("This is the Subject Line!");
 
-            emailWithAttachment(message);
+            emailWithHTML(message);
             System.out.println("Sent message successfully....");
 
         } catch (MessagingException mex) {
@@ -96,6 +96,12 @@ public class EmailWithVelocity {
         message.setContent(multipart);
 
         //send message
+        Transport.send(message);
+    }
+
+    //email with HTML
+    private static void emailWithHTML(MimeMessage message) throws MessagingException {
+        message.setContent("<h1>Hello World H1</h1>","text/html");
         Transport.send(message);
     }
 }
