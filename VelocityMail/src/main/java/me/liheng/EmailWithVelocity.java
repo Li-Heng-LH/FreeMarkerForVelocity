@@ -39,7 +39,7 @@ public class EmailWithVelocity {
             //Set Subject: header field
             message.setSubject("This is the Subject Line!");
 
-            emailWithHTML(message);
+            emailWithHtmlAndAttachment(message);
             System.out.println("Sent message successfully....");
 
         } catch (MessagingException mex) {
@@ -74,11 +74,11 @@ public class EmailWithVelocity {
     }
 
 
-    //email with attachment
-    private static void emailWithAttachment(MimeMessage message) throws MessagingException {
+    //email with HTML and attachment
+    private static void emailWithHtmlAndAttachment(MimeMessage message) throws MessagingException {
         //create MimeBodyPart object and set message text
         BodyPart messageBodyPart1 = new MimeBodyPart();
-        messageBodyPart1.setText("This is the message body!\n");
+        messageBodyPart1.setContent("<h1>Hello World H1</h1> <p>This is the message body!</p>","text/html");
 
         //create new MimeBodyPart object and set DataHandler object TO_ADDRESS MimeBodyPart
         MimeBodyPart messageBodyPart2 = new MimeBodyPart();
@@ -101,7 +101,7 @@ public class EmailWithVelocity {
 
     //email with HTML
     private static void emailWithHTML(MimeMessage message) throws MessagingException {
-        message.setContent("<h1>Hello World H1</h1>","text/html");
+        message.setContent("<h1>Hello World H1</h1> <p>This is the message body!</p>","text/html");
         Transport.send(message);
     }
 }
