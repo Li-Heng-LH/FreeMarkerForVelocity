@@ -1,5 +1,8 @@
 package me.liheng;
 
+import freemarker.template.Configuration;
+import freemarker.template.TemplateException;
+import freemarker.template.TemplateExceptionHandler;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -12,11 +15,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import java.io.FileInputStream;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.io.*;
+import java.util.*;
 
 public class EmailWithVelocity {
 
@@ -37,7 +37,7 @@ public class EmailWithVelocity {
                     }
                 });
 
-        String messageContent = generateContentFromVelocity();
+        String messageContent = generateContentFromFreeMarker();
 
         try {
 
@@ -116,6 +116,36 @@ public class EmailWithVelocity {
         StringWriter writer = new StringWriter();
         template.merge(context, writer);
         return writer.toString();
+    }
+
+    private static String generateContentFromFreeMarker() throws IOException, TemplateException {
+        /* Create and adjust the configuration singleton */
+        Configuration cfg = new Configuration(Configuration.VERSION_2_3_30);
+        cfg.setDirectoryForTemplateLoading(new File("/Users/liheng/OneDrive/FreeMarkerForVelocity/VelocityMail/src/main/resources/ftemplates"));
+        // Recommended settings for new projects:
+        cfg.setDefaultEncoding("UTF-8");
+        cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+        cfg.setLogTemplateExceptions(false);
+        cfg.setWrapUncheckedExceptions(true);
+        cfg.setFallbackOnNullLoopVariable(false);
+
+        Map root = new HashMap();
+        root.put("firstName","Heng");
+        root.put("lastName","Li");
+        root.put("signature","LH");
+        root.put("location","SG");
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("iPad Pro", 1349.00,"https://www.apple.com/sg/ipad-pro/"));
+        products.add(new Product("MacBook Pro", 3499.00,"https://www.apple.com/sg/macbook-pro-16/"));
+        products.add(new Product("Apple Watch", 599.00, "https://www.apple.com/sg/apple-watch-series-5/"));
+        root.put("products", products);
+        /* Get the template (uses cache internally) */
+        freemarker.template.Template temp = cfg.getTemplate("emailTemplate.ftl");
+
+        /* Merge data-model with template */
+        Writer out = new StringWriter();
+        temp.process(root, out);
+        return out.toString();
     }
 
 
