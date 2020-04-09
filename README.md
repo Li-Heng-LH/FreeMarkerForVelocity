@@ -26,3 +26,6 @@
 * [javatpoint: JavaMail Tutorial](https://www.javatpoint.com/java-mail-api-tutorial)
 * [Google SMTP Server – How to Send Emails for Free](https://www.siteground.com/kb/google_free_smtp_server/)
 * [tutorialspoint: Java - Sending Email](https://www.tutorialspoint.com/java/java_sending_email.htm)
+* [Java Properties](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html)
+
+
