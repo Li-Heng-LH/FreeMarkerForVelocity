@@ -1,5 +1,9 @@
 package me.liheng;
 
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
+
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -9,6 +13,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.FileInputStream;
+import java.io.StringWriter;
 import java.util.Properties;
 
 public class EmailWithVelocity {
@@ -30,6 +35,8 @@ public class EmailWithVelocity {
                     }
                 });
 
+        String messageContent = generateContentFromVelocity();
+
         try {
 
             //Create a default MimeMessage object
@@ -39,7 +46,7 @@ public class EmailWithVelocity {
             //Set Subject: header field
             message.setSubject("This is the Subject Line!");
 
-            emailWithHtmlAndAttachment(message);
+            emailWithHtmlAndAttachment(message, messageContent);
             System.out.println("Sent message successfully....");
 
         } catch (MessagingException mex) {
@@ -47,38 +54,10 @@ public class EmailWithVelocity {
         }
     }
 
-    private static void setProperties(Properties properties) throws Exception {
-        FileInputStream in = new FileInputStream("src/main/resources/config.properties");
-        properties.load(in);
-        in.close();
-        password = properties.getProperty("password");
-
-        System.out.println(password);
-
-        //To use Gmail's SMTP server,need the following settings for outgoing emails
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.socketFactory.port", "465");
-        properties.put("mail.smtp.socketFactory.class",
-                "javax.net.ssl.SSLSocketFactory");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.port", "465");
-    }
-
-
-    //simple email
-    private static void emailWithText(MimeMessage message) throws MessagingException {
-        //set the actual message
-        message.setText("This is actual message");
-        //send message
-        Transport.send(message);
-    }
-
-
-    //email with HTML and attachment
-    private static void emailWithHtmlAndAttachment(MimeMessage message) throws MessagingException {
+    private static void emailWithHtmlAndAttachment(MimeMessage message, String messageContent) throws MessagingException {
         //create MimeBodyPart object and set message text
         BodyPart messageBodyPart1 = new MimeBodyPart();
-        messageBodyPart1.setContent("<h1>Hello World H1</h1> <p>This is the message body!</p>","text/html");
+        messageBodyPart1.setContent(messageContent,"text/html");
 
         //create new MimeBodyPart object and set DataHandler object TO_ADDRESS MimeBodyPart
         MimeBodyPart messageBodyPart2 = new MimeBodyPart();
@@ -99,9 +78,55 @@ public class EmailWithVelocity {
         Transport.send(message);
     }
 
+    private static void setProperties(Properties properties) throws Exception {
+        FileInputStream in = new FileInputStream("src/main/resources/config.properties");
+        properties.load(in);
+        in.close();
+        password = properties.getProperty("password");
+
+        System.out.println(password);
+
+        //To use Gmail's SMTP server,need the following settings for outgoing emails
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.socketFactory.port", "465");
+        properties.put("mail.smtp.socketFactory.class",
+                "javax.net.ssl.SSLSocketFactory");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.port", "465");
+    }
+
+    private static String generateContentFromVelocity() {
+        VelocityEngine velocityEngine = new VelocityEngine();
+        velocityEngine.init();
+        Template template = velocityEngine.getTemplate("/src/main/resources/vtemplates/emailTemplate.vm");
+        VelocityContext context = new VelocityContext();
+        context.put("firstName","Heng");
+        context.put("lastName","Li");
+        context.put("signature","LH");
+        context.put("location","SG");
+        StringWriter writer = new StringWriter();
+        template.merge(context, writer);
+        return writer.toString();
+    }
+
+
+    //simple email
+    private static void emailWithText(MimeMessage message) throws MessagingException {
+        //set the actual message
+        message.setText("This is actual message");
+        //send message
+        Transport.send(message);
+    }
+
     //email with HTML
     private static void emailWithHTML(MimeMessage message) throws MessagingException {
         message.setContent("<h1>Hello World H1</h1> <p>This is the message body!</p>","text/html");
         Transport.send(message);
     }
+
+    //email with HTML and attachment
+    private static void emailWithHtmlAndAttachment(MimeMessage message) throws MessagingException {
+        emailWithHtmlAndAttachment(message, "<h1>Hello World H1</h1> <p>This is the message body!</p>");
+    }
+
 }
