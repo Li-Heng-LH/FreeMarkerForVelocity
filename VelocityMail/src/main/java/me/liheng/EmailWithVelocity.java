@@ -14,6 +14,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.io.FileInputStream;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class EmailWithVelocity {
@@ -104,6 +106,13 @@ public class EmailWithVelocity {
         context.put("lastName","Li");
         context.put("signature","LH");
         context.put("location","SG");
+
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("iPad Pro", 1349.00,"https://www.apple.com/sg/ipad-pro/"));
+        products.add(new Product("MacBook Pro", 3499.00,"https://www.apple.com/sg/macbook-pro-16/"));
+        products.add(new Product("Apple Watch", 599.00, "https://www.apple.com/sg/apple-watch-series-5/"));
+        context.put("products", products);
+
         StringWriter writer = new StringWriter();
         template.merge(context, writer);
         return writer.toString();
