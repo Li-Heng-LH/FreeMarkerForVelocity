@@ -6,9 +6,9 @@
     <p>Here are your products: <br/></p>
 
     <ul>
-#foreach( $product in $products )
-    <li> $product.name :  $product.price (<a href="$product.link">Link</a>) </li>
-#end
+<#list products as product>
+    <li> ${product.name} :  ${product.price} (<a href="${product.link}">Link</a>) </li>
+</#list>
     </ul>
 
     <p><br/>Thanks<br/></p>
