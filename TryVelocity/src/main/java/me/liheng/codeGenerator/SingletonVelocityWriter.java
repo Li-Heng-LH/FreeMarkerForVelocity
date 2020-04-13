@@ -7,6 +7,7 @@ import org.apache.velocity.app.Velocity;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class SingletonVelocityWriter {
 
@@ -14,12 +15,14 @@ public class SingletonVelocityWriter {
     static String packageName = "me.liheng.project";
 
     public static void main(String[] args) {
+        Properties properties = new Properties();
+        properties.setProperty("file.resource.loader.path","src/main/resources/vtemplates");
 
         //initialize the Velocity engine Singleton
-        Velocity.init();
+        Velocity.init(properties);
 
         //Read the template USING STATIC method
-        Template template = Velocity.getTemplate("/src/main/resources/vtemplates/class.vm");
+        Template template = Velocity.getTemplate("class.vm");
 
         //Initialise the velocity context
         VelocityContext context = new VelocityContext();
