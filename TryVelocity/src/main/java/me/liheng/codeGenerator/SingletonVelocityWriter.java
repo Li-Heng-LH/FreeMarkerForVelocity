@@ -2,25 +2,24 @@ package me.liheng.codeGenerator;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.app.Velocity;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VelocityWriter {
+public class SingletonVelocityWriter {
 
     static String className = "User";
     static String packageName = "me.liheng.project";
 
     public static void main(String[] args) {
 
-        //Initialise the velocity engine instance
-        VelocityEngine velocityEngine = new VelocityEngine();
-        velocityEngine.init();
+        //initialize the Velocity engine Singleton
+        Velocity.init();
 
-        //Read the template USING INSTANCE method
-        Template template = velocityEngine.getTemplate("/src/main/resources/vtemplates/class.vm");
+        //Read the template USING STATIC method
+        Template template = Velocity.getTemplate("/src/main/resources/vtemplates/class.vm");
 
         //Initialise the velocity context
         VelocityContext context = new VelocityContext();
@@ -41,5 +40,4 @@ public class VelocityWriter {
 
         System.out.println(writer.toString());
     }
-
 }
