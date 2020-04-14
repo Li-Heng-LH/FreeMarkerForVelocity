@@ -7,6 +7,7 @@ import org.apache.velocity.app.VelocityEngine;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class VelocityWriter {
 
@@ -15,12 +16,13 @@ public class VelocityWriter {
 
     public static void main(String[] args) {
 
-        //Initialise the velocity engine instance
+        //Create the velocity engine instance
         VelocityEngine velocityEngine = new VelocityEngine();
-        velocityEngine.init();
+
+        initialiseVelocityEngine2(velocityEngine);
 
         //Read the template USING INSTANCE method
-        Template template = velocityEngine.getTemplate("/src/main/resources/vtemplates/class.vm");
+        Template template = velocityEngine.getTemplate("class.vm");
 
         //Initialise the velocity context
         VelocityContext context = new VelocityContext();
@@ -40,6 +42,19 @@ public class VelocityWriter {
         template.merge(context, writer);
 
         System.out.println(writer.toString());
+    }
+
+    private static void initialiseVelocityEngine1(VelocityEngine velocityEngine) {
+        Properties properties = new Properties();
+        properties.setProperty("file.resource.loader.path","src/main/resources/vtemplates");
+
+        //Initialise the velocity engine instance
+        velocityEngine.init(properties);
+    }
+
+    private static void initialiseVelocityEngine2(VelocityEngine velocityEngine) {
+        velocityEngine.setProperty("file.resource.loader.path","src/main/resources/vtemplates");
+        velocityEngine.init();
     }
 
 }
