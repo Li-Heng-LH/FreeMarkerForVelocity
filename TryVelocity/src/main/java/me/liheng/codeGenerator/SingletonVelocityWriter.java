@@ -1,11 +1,8 @@
 package me.liheng.codeGenerator;
 
-import org.apache.velocity.Template;
-import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.Properties;
 
 public class SingletonVelocityWriter {

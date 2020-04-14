@@ -3,9 +3,7 @@ package me.liheng.codeGenerator;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import freemarker.template.TemplateExceptionHandler;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -21,20 +19,8 @@ public class FreeMarkerWriter {
 
     public static void main(String[] args) throws IOException, TemplateException {
 
-        /* ------------------------------------------------------------------------ */
-        /* You should do this ONLY ONCE in the whole application life-cycle:        */
-
         /* Create and adjust the configuration singleton */
-        Configuration cfg = new Configuration(Configuration.VERSION_2_3_30);
-        cfg.setDirectoryForTemplateLoading(new File("/Users/liheng/OneDrive/FreeMarkerForVelocity/TryFreeMarker/src/main/resources/ftemplates"));
-        // Recommended settings for new projects:
-        cfg.setDefaultEncoding("UTF-8");
-        cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-        cfg.setLogTemplateExceptions(false);
-        cfg.setWrapUncheckedExceptions(true);
-        cfg.setFallbackOnNullLoopVariable(false);
-
-
+        Configuration cfg = ConfigurationSingleton.getInstance();
 
         /* ------------------------------------------------------------------------ */
         /* You usually do these for MULTIPLE TIMES in the application life-cycle:   */
