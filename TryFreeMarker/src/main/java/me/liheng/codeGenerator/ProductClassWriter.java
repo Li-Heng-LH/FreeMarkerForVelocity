@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserClassWriter {
-    private static String className = "User";
+public class ProductClassWriter {
+    private static String className = "Product";
     private static String packageName = "me.liheng.project";
 
     public static void write() throws IOException, TemplateException {
@@ -24,9 +24,8 @@ public class UserClassWriter {
         root.put("className", className);
         List<Attribute> attributes = new ArrayList<>();
         attributes.add(new Attribute("id", "int"));
-        attributes.add(new Attribute("firstName", "String"));
-        attributes.add(new Attribute("lastName", "String"));
-        attributes.add(new Attribute("dob", "LocalDate"));
+        attributes.add(new Attribute("name", "String"));
+        attributes.add(new Attribute("price", "double"));
         root.put("attributes", attributes);
 
 
@@ -43,7 +42,7 @@ public class UserClassWriter {
         //Write to file
         FileWriter fw = null;
         try {
-            fw = new FileWriter("out/User.java");
+            fw = new FileWriter("out/Product.java");
             fw.write(stringWriter.toString());
         } finally {
             if (fw != null) {
