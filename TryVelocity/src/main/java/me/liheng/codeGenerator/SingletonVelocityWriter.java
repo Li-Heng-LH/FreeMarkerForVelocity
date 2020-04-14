@@ -15,11 +15,8 @@ public class SingletonVelocityWriter {
     static String packageName = "me.liheng.project";
 
     public static void main(String[] args) {
-        Properties properties = new Properties();
-        properties.setProperty("file.resource.loader.path","src/main/resources/vtemplates");
 
-        //initialize the Velocity engine Singleton
-        Velocity.init(properties);
+        initialiseVelocity2();
 
         //Read the template USING STATIC method
         Template template = Velocity.getTemplate("class.vm");
@@ -42,5 +39,20 @@ public class SingletonVelocityWriter {
         template.merge(context, writer);
 
         System.out.println(writer.toString());
+    }
+
+    private static void initialiseVelocity1() {
+        Properties properties = new Properties();
+        properties.setProperty("file.resource.loader.path","src/main/resources/vtemplates");
+
+        //initialize the Velocity engine Singleton
+        Velocity.init(properties);
+    }
+
+    private static void initialiseVelocity2() {
+        Velocity.setProperty("file.resource.loader.path","src/main/resources/vtemplates");
+
+        //initialize the Velocity engine Singleton
+        Velocity.init();
     }
 }
