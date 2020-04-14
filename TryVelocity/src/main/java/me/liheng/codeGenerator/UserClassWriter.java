@@ -1,6 +1,5 @@
 package me.liheng.codeGenerator;
 
-import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
@@ -30,12 +29,9 @@ public class UserClassWriter {
         attributes.add(new Attribute("dob", "LocalDate"));
         context.put("attributes", attributes);
 
-        //Read the template USING STATIC method
-        Template template = Velocity.getTemplate("class.vm");
-
         //Merge the template with context data
         StringWriter stringWriter = new StringWriter();
-        template.merge(context, stringWriter);
+        Velocity.mergeTemplate("class.vm", context, stringWriter);
 
         //Write to file
         FileWriter fw = null;
