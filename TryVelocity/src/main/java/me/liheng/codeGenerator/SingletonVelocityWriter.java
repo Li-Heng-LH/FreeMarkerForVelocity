@@ -11,10 +11,9 @@ import java.util.Properties;
 public class SingletonVelocityWriter {
 
     public static void main(String[] args) throws IOException {
-
         initialiseVelocity2();
-
         UserClassWriter.write();
+        ProductClassWriter.write();
     }
 
 
