@@ -9,8 +9,7 @@ public class SingletonVelocityWriter {
 
     public static void main(String[] args) throws IOException {
         initialiseVelocity2();
-        UserClassWriter.write();
-        ProductClassWriter.write();
+        TableHtmlWriter.write();
     }
 
 
