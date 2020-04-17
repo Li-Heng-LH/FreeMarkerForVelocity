@@ -24,7 +24,7 @@ public class TableHtmlWriter {
         Configuration cfg = ConfigurationSingleton.getInstance();
 
         /* Get the template (uses cache internally) */
-        Template temp = cfg.getTemplate("table.ftl");
+        Template temp = cfg.getTemplate("try.ftl");
 
         /* Merge data-model with template */
         StringWriter stringWriter = new StringWriter();

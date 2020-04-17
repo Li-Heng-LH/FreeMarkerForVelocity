@@ -23,13 +23,6 @@
                 <#assign summaryHeader = summary?first >
                 <#assign summaryHeaderTokens = trimmedSplit(summaryHeader, ",") >
 
-                <#list summaryHeaderTokens as token>
-                <h2> ${token} </h2>
-                </#list>
-
-
-
-
                 #set ($summaryHeaderTokens = $StringUtils.trimmedSplit($summaryHeader, ','))
 
                 <table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:100%">
