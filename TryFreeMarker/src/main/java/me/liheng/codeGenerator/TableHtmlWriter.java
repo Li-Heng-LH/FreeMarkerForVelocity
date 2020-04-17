@@ -18,6 +18,7 @@ public class TableHtmlWriter {
         root.put("didPass", true);
         root.put("summary", readCSV());
         root.put("StringUtils", StringUtils.class);
+        root.put("trimmedSplit", new TrimmedSplitMethod());
 
         /* Get the configuration singleton */
         Configuration cfg = ConfigurationSingleton.getInstance();

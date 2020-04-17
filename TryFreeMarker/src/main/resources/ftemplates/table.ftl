@@ -4,23 +4,32 @@
 
     <table style="width: 100%">
         <tr>
-            #if ($didPass)
+            <#if didPass>
                 <th style= "background-color: #006600; color: #ffffff; height:60px; margin:6px; border: 1px solid black"> Status: Pass </th>
-            #else
+            <#else>
                 <th style= "background-color: #B20000; color: #ffffff; height:60px; margin:6px; border: 1px solid black"> Status: Fail </th>
-            #end
+            </#if>
         </tr>
 
-        #set ($NumberOfColumnsInReport = 6)
-        #set ($failedColNum = $NumberOfColumnsInReport - 1)
-        #set ($releaseYearColNum = $NumberOfColumnsInReport - 2)
-        #set ($modelColNum = $NumberOfColumnsInReport - 3)
+        <#assign NumberOfColumnsInReport = 6
+        failedColNum = NumberOfColumnsInReport - 1
+        releaseYearColNum = NumberOfColumnsInReport - 2
+        modelColNum = NumberOfColumnsInReport - 3 >
 
         <tr><td>
-            #if ($summary.size() == 0)
+            <#if summary?size == 0 >
                 <th style="height:60px"> Summary cannot be retrieved</th>
-            #else
-                #set ($summaryHeader = $summary.remove(0))
+            <#else>
+                <#assign summaryHeader = summary?first >
+                <#assign summaryHeaderTokens = trimmedSplit(summaryHeader, ",") >
+
+                <#list summaryHeaderTokens as token>
+                <h2> ${token} </h2>
+                </#list>
+
+
+
+
                 #set ($summaryHeaderTokens = $StringUtils.trimmedSplit($summaryHeader, ','))
 
                 <table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:100%">
@@ -36,7 +45,8 @@
                     <tbody>
                     ## Add detail Rows
                     #foreach($line in $summary)
-                        #set ($summaryLineTokens = $StringUtils.trimmedSplit($line, ','))
+
+                        <#--   <#assign summaryLineTokens = StringUtils.trimmedSplit($line, ',') > -->
 
                         ## Determine Background color
                         #if($summaryLineTokens.size() > $failedColNum && $summaryLineTokens.get($failedColNum) == "failed")
@@ -58,7 +68,7 @@
 
               </table>
 
-            #end
+            </#if>
 
             </td></tr>
     </table>
