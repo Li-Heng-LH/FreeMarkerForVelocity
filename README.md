@@ -44,12 +44,14 @@ The issue is: Passing in `StringUtils.class` and using static `StringUtils.trimm
   * `SimpleScalar.getAsString()`: `return this.value == null ? "" : this.value;`
   * `SimpleScalar.toString()`: `return this.value;`
 &nbsp;
-##### 2: Pass in an initialised StringUtils instance #####
+##### 2: Pass in an initialised StringUtils instance (Bad Practice) #####
 * Pass in `new StringUtils()` to template 
 * Question: Will this work for Utility Classes?  
 Depends.   
 For a completely stateless utility class in Java, the is declared public and final,   
-and it has a private constructor to prevent instantiation.  
+and it has a private constructor to prevent instantiation.   
+Another example: org.apache.commons.lang3.StringUtils: StringUtils instances should NOT be constructed in standard programming.
+* Therefore, Way 2 should not be used in general.  
 &nbsp;
 
 &nbsp;
