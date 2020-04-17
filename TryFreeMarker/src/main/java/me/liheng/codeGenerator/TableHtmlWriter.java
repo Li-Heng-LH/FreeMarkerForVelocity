@@ -17,7 +17,7 @@ public class TableHtmlWriter {
         Map root = new HashMap();
         root.put("didPass", true);
         root.put("summary", readCSV());
-        root.put("StringUtils", StringUtils.class);
+        root.put("StringUtils", new StringUtils());
         root.put("trimmedSplit", new TrimmedSplitMethod());
 
         /* Get the configuration singleton */

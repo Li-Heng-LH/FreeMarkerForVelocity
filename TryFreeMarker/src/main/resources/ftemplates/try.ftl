@@ -21,7 +21,7 @@
                 <th style="height:60px"> Summary cannot be retrieved</th>
             <#else>
                 <#assign summaryHeader = summary?first >
-                <#assign summaryHeaderTokens = trimmedSplit(summaryHeader, ",") >
+                <#assign summaryHeaderTokens = StringUtils.trimmedSplit(summaryHeader, ",") >
 
                 <#-- ******** To be removed ******** -->
                 <#list summaryHeaderTokens as token>
