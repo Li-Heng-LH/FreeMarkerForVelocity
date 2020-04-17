@@ -1,16 +1,20 @@
 package me.liheng.codeGenerator;
 
-import freemarker.template.TemplateMethodModel;
+import freemarker.template.SimpleScalar;
+import freemarker.template.TemplateMethodModelEx;
 import freemarker.template.TemplateModelException;
 
 import java.util.List;
 
-public class TrimmedSplitMethod implements TemplateMethodModel {
+public class TrimmedSplitMethod implements TemplateMethodModelEx {
 
     @Override
     public Object exec(List list) throws TemplateModelException {
-        String string = (String) list.get(0);
-        String delim = (String) list.get(1);
+        String string = ((SimpleScalar) list.get(0)).getAsString();
+        String delim = ((SimpleScalar) list.get(1)).getAsString();
+
+        System.out.println(string);
+        System.out.println(delim);
 
         if (string != null && delim !=null) {
             String[] rawTokens = string.split(delim);

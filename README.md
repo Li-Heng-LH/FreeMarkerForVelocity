@@ -32,6 +32,20 @@ and the Developer Guide to guide you in the process of configuring and integrati
 
 ##### Important #####
 * The Singleton we talking about here is the **Velocity engine instance**. 
+&nbsp;   
+&nbsp;   
+
+#### FreeMarker: Ways to pass in Static methods to templates ####
+The issue is: Using `StringUtils.trimmedSplit()` in template will result in: `StringUtils.trimmedSplit evaluated to null or missing`
+##### 1:  Use TemplateMethodModelEx #####
+* Make trimmedSplit method into a class and implement [TemplateMethodModelEx](https://freemarker.apache.org/docs/pgui_datamodel_method.html).
+* Pass in an instance of the method object into template.
+* Diff between `SimpleScalar.getAsString()` vs `SimpleScalar.toString()`: 
+  * `SimpleScalar.getAsString()`: `return this.value == null ? "" : this.value;`
+  * `SimpleScalar.toString()`: `return this.value;`
+
+&nbsp;
+
 
 &nbsp;
 ----
