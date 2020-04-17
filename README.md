@@ -46,7 +46,10 @@ The issue is: Passing in `StringUtils.class` and using static `StringUtils.trimm
 &nbsp;
 ##### 2: Pass in an initialised StringUtils instance #####
 * Pass in `new StringUtils()` to template 
-* ? Question: Will this work for Utility Classes? 
+* Question: Will this work for Utility Classes?  
+Depends.   
+For a completely stateless utility class in Java, the is declared public and final,   
+and it has a private constructor to prevent instantiation.  
 &nbsp;
 
 &nbsp;

@@ -20,6 +20,8 @@ public class TableHtmlWriter {
         root.put("StringUtils", new StringUtils());
         root.put("trimmedSplit", new TrimmedSplitMethod());
 
+        //root.put("Math",new java.lang.Math()); //Error: java.lang.Math cannot be initialised: constructor is private
+
         /* Get the configuration singleton */
         Configuration cfg = ConfigurationSingleton.getInstance();
 
