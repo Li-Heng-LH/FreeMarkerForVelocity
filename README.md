@@ -35,6 +35,20 @@ and the Developer Guide to guide you in the process of configuring and integrati
 &nbsp;   
 &nbsp;   
 
+##### FreeMarker Concepts #####
+* Interface `ObjectWrapper`: has a method **`wrap()`** that **converts** Java objects to `TemplateModel`. 
+* Some implementations of `ObjectWrapper` interface: `BeansWrapper`, `DefaultObjectWrapper`. 
+* A `TemplateModel` is FTL's type system. 
+* A `TemplateModel` typically has methods like `get()`, `isEmpty()`.
+* The data-model itself (the root variable) is a TemplateModel (TemplateHashModel). 
+* `DefaultObjectWrapper` **wraps** basic Java types (String, List, array, Map) into `TemplateModel`.
+* `DefaultObjectWrapper` is set as `Configurations`'s default ObjectWrapper. 
+* `BeansWrapper`is used instead of `DefaultObjectWrapper` only when: 
+  1. The Collection-s and Map-s of the model should be allowed to be modified during template execution.
+  2. If the identity of the array, Collection and Map objects must be kept when they are passed to a wrapped object's method in the template. 
+  3. If the Java API of the earlier **listed classes (String, Map, List** ...etc) should be visible for the templates.  
+&nbsp;
+
 #### FreeMarker: Ways to pass in Static methods to templates ####
 The issue is: Passing in `StringUtils.class` and using static `StringUtils.trimmedSplit()` in template will result in: `StringUtils.trimmedSplit evaluated to null or missing`
 ##### 1:  Use TemplateMethodModelEx #####
