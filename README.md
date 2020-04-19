@@ -47,6 +47,9 @@ and the Developer Guide to guide you in the process of configuring and integrati
   1. The Collection-s and Map-s of the model should be allowed to be modified during template execution.
   2. If the identity of the array, Collection and Map objects must be kept when they are passed to a wrapped object's method in the template. 
   3. If the Java API of the earlier **listed classes (String, Map, List** ...etc) should be visible for the templates.  
+* `DefaultObjectWrapper` extends `BeansWrapper`.  
+* Using BeansWrapper directly is not recommended anymore. Use its subclass, DefaultObjectWrapper instead. 
+![ObjectWrapper.png](Docs/ObjectWrapper.png)
 &nbsp;
 
 #### FreeMarker: Ways to pass in Static methods to templates ####
