@@ -1,8 +1,10 @@
 package me.liheng.codeGenerator;
 
+import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import freemarker.template.TemplateHashModel;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,13 +19,18 @@ public class TableHtmlWriter {
         Map root = new HashMap();
         root.put("didPass", true);
         root.put("summary", readCSV());
-        root.put("StringUtils", new StringUtils());
         root.put("trimmedSplit", new TrimmedSplitMethod());
 
         //root.put("Math",new java.lang.Math()); //Error: java.lang.Math cannot be initialised: constructor is private
 
         /* Get the configuration singleton */
         Configuration cfg = ConfigurationSingleton.getInstance();
+        BeansWrapper wrapper = BeansWrapper.getDefaultInstance();
+        TemplateHashModel staticModels = wrapper.getStaticModels();
+        TemplateHashModel stringUtilsStatics =
+                (TemplateHashModel) staticModels.get("me.liheng.codeGenerator.StringUtils");
+        root.put("StringUtils", stringUtilsStatics);
+
 
         /* Get the template (uses cache internally) */
         Template temp = cfg.getTemplate("try.ftl");

@@ -70,6 +70,10 @@ and it has a private constructor to prevent instantiation.
 Another example: org.apache.commons.lang3.StringUtils: StringUtils instances should NOT be constructed in standard programming.
 * Therefore, Way 2 should not be used in general.  
 &nbsp;
+##### 3: Use TemplateHashModel #####
+* The `TemplateHashModel` returned from `BeansWrapper.getStaticModels()` can be used to create hash models for accessing static methods and fields of an arbitrary class.
+* `TemplateHashModel stringUtilsStatics = (TemplateHashModel) staticModels.get("me.liheng.codeGenerator.StringUtils");`
+&nbsp;
 
 &nbsp;
 ----
