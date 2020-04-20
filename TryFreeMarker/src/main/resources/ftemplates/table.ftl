@@ -41,15 +41,15 @@
                         <#assign summaryLineTokens = StringUtils.trimmedSplit(line, ",") >
 
                         <#-- Determine Background color -->
-                        #if($summaryLineTokens.size() > $failedColNum && $summaryLineTokens.get($failedColNum) == "failed")
-                            #if($summaryLineTokens.get($releaseYearColNum) == 'Long Ago' || $summaryLineTokens.get($modelColNum) == 'Not Found')
+                        <#if (summaryLineTokens?size > failedColNum && summaryLineTokens[failedColNum] == "failed") >
+                            <#if summaryLineTokens[releaseYearColNum] == 'Long Ago' || summaryLineTokens[modelColNum] == 'Not Found' >
                                 <tr style="background-color: #B20000; color: #ffffff">
-                            #else
+                            <#else>
                                 <tr style="background-color: #F3EED7; color: #000000">
-                            #end
-                        #else
+                            </#if>
+                        <#else>
                             <tr style="background-color: #ffffff; color: #000000">
-                        #end
+                        </#if>
 
                         <#list summaryLineTokens as token >
                             <td style="border: 1px solid black; padding:5px"> ${token} </td>
