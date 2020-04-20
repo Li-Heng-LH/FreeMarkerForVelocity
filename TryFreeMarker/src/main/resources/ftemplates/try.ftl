@@ -20,7 +20,13 @@
             <#if summary?size == 0 >
                 <th style="height:60px"> Summary cannot be retrieved</th>
             <#else>
-                <#assign StringUtils = statics['me.liheng.codeGenerator.StringUtils'] >
+
+
+
+                <#--   <#assign StringUtils = statics['me.liheng.codeGenerator.StringUtils'] >  -->
+
+
+
                 <#assign summaryHeader = summary?first >
                 <#assign summaryHeaderTokens = StringUtils.trimmedSplit(summaryHeader, ",") >
 
@@ -28,6 +34,8 @@
                 <#list summaryHeaderTokens as token>
                 <h2> ${token} </h2>
                 </#list>
+
+                <h3> ${Math.random()}</h3>
                  <#-- ************************ -->
 
             </#if>

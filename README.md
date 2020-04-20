@@ -79,6 +79,10 @@ Another example: org.apache.commons.lang3.StringUtils: StringUtils instances sho
 * In ftl file: `<#assign StringUtils = statics['me.liheng.codeGenerator.StringUtils'] >`
 &nbsp;
 
+##### Question: If I have several utility classes to pass into ftl, which of 3 or 4 is better? #####
+* 
+&nbsp;
+
 &nbsp;
 ----
 ### Useful links ###
