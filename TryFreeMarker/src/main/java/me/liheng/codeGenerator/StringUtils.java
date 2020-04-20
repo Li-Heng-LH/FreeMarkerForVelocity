@@ -2,8 +2,6 @@ package me.liheng.codeGenerator;
 
 public class StringUtils {
 
-    private StringUtils(){}
-
     public static String[] trimmedSplit(String string, String delim) throws Exception {
         if (string != null && delim !=null) {
 
@@ -22,5 +20,11 @@ public class StringUtils {
         } else {
             throw new Exception();
         }
+    }
+
+    public void methodA() {}
+
+    public int getZero() {
+        return 0;
     }
 }
