@@ -24,23 +24,21 @@ public class TableHtmlWriter {
         Configuration cfg = ConfigurationSingleton.getInstance();
 
         //Way 3
-        /*
         BeansWrapper wrapper = BeansWrapper.getDefaultInstance();
         TemplateHashModel staticModels = wrapper.getStaticModels();
         TemplateHashModel stringUtilsStatics = (TemplateHashModel) staticModels.get("me.liheng.codeGenerator.StringUtils");
         TemplateHashModel mathStatics = (TemplateHashModel) staticModels.get("java.lang.Math");
         root.put("StringUtils", stringUtilsStatics);
         root.put("Math", mathStatics);
-        */
 
 
 
-        //Way 4
-
+        //Way 4: Not recommended
+        /*
         BeansWrapper wrapper = BeansWrapper.getDefaultInstance();
         TemplateModel statics = wrapper.getStaticModels();
         root.put("statics", statics);
-
+        */
 
 
         /* Get the template (uses cache internally) */
