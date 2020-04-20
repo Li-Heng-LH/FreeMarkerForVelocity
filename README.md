@@ -68,7 +68,8 @@ Depends.
 For a completely stateless utility class in Java, the is declared public and final,   
 and it has a private constructor to prevent instantiation.   
 Another example: org.apache.commons.lang3.StringUtils: StringUtils instances should NOT be constructed in standard programming.
-* Therefore, Way 2 should not be used in general.  
+* Therefore, Way 2 should not be used in general.
+* Also, even if it is a non utility class (in the case of this StringUtils), it may be bad or costly to instantiate an instance.     
 &nbsp;
 ##### 3: Use TemplateHashModel #####
 * The `TemplateHashModel` returned from `BeansWrapper.getStaticModels()` can be used to create hash models for accessing static methods and fields of an arbitrary class.

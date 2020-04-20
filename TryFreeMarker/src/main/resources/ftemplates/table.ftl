@@ -20,28 +20,27 @@
             <#if summary?size == 0 >
                 <th style="height:60px"> Summary cannot be retrieved</th>
             <#else>
-                <#assign summaryHeader = summary?first >
-                <#assign summaryHeaderTokens = trimmedSplit(summaryHeader, ",") >
-
-                #set ($summaryHeaderTokens = $StringUtils.trimmedSplit($summaryHeader, ','))
+                <#assign summaryHeaderTokens = StringUtils.trimmedSplit(summaryHeader, ",") >
 
                 <table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:100%">
                     <thead>
-                    ## Add Header Row
+                    <#-- Add Header Row -->
                     <tr style = "background-color: #A09FDA">
-                        #foreach ($headerToken in $summaryHeaderTokens)
-                            <th style="border: 1px solid black; padding:5px"> $headerToken </th>
-                        #end
+
+                        <#list summaryHeaderTokens as headerToken >
+                            <th style="border: 1px solid black; padding:5px"> ${headerToken} </th>
+                        </#list>
+
                     </tr>
                     </thead>
 
                     <tbody>
-                    ## Add detail Rows
-                    #foreach($line in $summary)
+                    <#-- Add detail Rows -->
+                    <#list summaryBody as line >
 
-                        <#--   <#assign summaryLineTokens = StringUtils.trimmedSplit($line, ',') > -->
+                        <#assign summaryLineTokens = StringUtils.trimmedSplit(line, ",") >
 
-                        ## Determine Background color
+                        <#-- Determine Background color -->
                         #if($summaryLineTokens.size() > $failedColNum && $summaryLineTokens.get($failedColNum) == "failed")
                             #if($summaryLineTokens.get($releaseYearColNum) == 'Long Ago' || $summaryLineTokens.get($modelColNum) == 'Not Found')
                                 <tr style="background-color: #B20000; color: #ffffff">
@@ -52,11 +51,11 @@
                             <tr style="background-color: #ffffff; color: #000000">
                         #end
 
-                        #foreach ($token in $summaryLineTokens)
-                            <td style="border: 1px solid black; padding:5px"> $token </td>
-                        #end
+                        <#list summaryLineTokens as token >
+                            <td style="border: 1px solid black; padding:5px"> ${token} </td>
+                        </#list>
                             </tr>
-                    #end
+                    </#list>
                 </tbody>
 
               </table>
