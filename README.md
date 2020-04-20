@@ -74,6 +74,10 @@ Another example: org.apache.commons.lang3.StringUtils: StringUtils instances sho
 * The `TemplateHashModel` returned from `BeansWrapper.getStaticModels()` can be used to create hash models for accessing static methods and fields of an arbitrary class.
 * `TemplateHashModel stringUtilsStatics = (TemplateHashModel) staticModels.get("me.liheng.codeGenerator.StringUtils");`
 &nbsp;
+##### 4: statics [class] #####
+* In java file: `root.put("statics", statics);`
+* In ftl file: `<#assign StringUtils = statics['me.liheng.codeGenerator.StringUtils'] >`
+&nbsp;
 
 &nbsp;
 ----

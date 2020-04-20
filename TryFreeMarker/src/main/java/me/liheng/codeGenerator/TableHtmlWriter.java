@@ -1,10 +1,7 @@
 package me.liheng.codeGenerator;
 
 import freemarker.ext.beans.BeansWrapper;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
-import freemarker.template.TemplateHashModel;
+import freemarker.template.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -25,11 +22,23 @@ public class TableHtmlWriter {
 
         /* Get the configuration singleton */
         Configuration cfg = ConfigurationSingleton.getInstance();
+
+        //Way 3
+        /*
         BeansWrapper wrapper = BeansWrapper.getDefaultInstance();
         TemplateHashModel staticModels = wrapper.getStaticModels();
         TemplateHashModel stringUtilsStatics =
                 (TemplateHashModel) staticModels.get("me.liheng.codeGenerator.StringUtils");
         root.put("StringUtils", stringUtilsStatics);
+        */
+
+
+
+        //Way 4
+        BeansWrapper wrapper = BeansWrapper.getDefaultInstance();
+        TemplateModel statics = wrapper.getStaticModels();
+        root.put("statics", statics);
+
 
 
         /* Get the template (uses cache internally) */
