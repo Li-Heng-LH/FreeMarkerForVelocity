@@ -23,7 +23,8 @@
 
 
 
-                <#--   <#assign StringUtils = statics['me.liheng.codeGenerator.StringUtils'] >  -->
+                <#assign StringUtils = statics['me.liheng.codeGenerator.StringUtils'] >
+                <#assign Math = statics['java.lang.Math'] >
 
 
 
