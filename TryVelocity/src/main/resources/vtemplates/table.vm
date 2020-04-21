@@ -66,6 +66,13 @@
 
             </td></tr>
     </table>
+
+    #set( $greatlakes = ["Superior","Michigan","Huron","Erie","Ontario"] )
+    #set( $color = "blue" )
+    <table>
+        #tablerows( $color $greatlakes )
+    </table>
+
     </body>
 
 </html>
