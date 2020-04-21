@@ -85,6 +85,13 @@ Another example: org.apache.commons.lang3.StringUtils: StringUtils instances sho
 * Way 4 passes in the whole statistics. 
 * Way 4 has even **more security implications**, as someone could even invoke `System.exit()` using this model if the method exposure level is weakened to `EXPOSE_ALL`.
 &nbsp;  
+&nbsp;
+
+### Important: 2 ways to invoke Java API of List ###
+1. `BeansWrapper.getDefaultInstance().wrap();` ([Reference](https://freemarker.apache.org/docs/pgui_misc_beanwrapper.html))
+2. `value?api.someJavaMethod()` ([Reference](https://freemarker.apache.org/docs/versions_2_3_22.html))
+&nbsp;  
+&nbsp;  
 
 ##### usCavalry #####
 Unable to: 
