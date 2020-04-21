@@ -84,7 +84,7 @@ Another example: org.apache.commons.lang3.StringUtils: StringUtils instances sho
 * Way 3
 * Way 4 passes in the whole statistics. 
 * Way 4 has even **more security implications**, as someone could even invoke `System.exit()` using this model if the method exposure level is weakened to `EXPOSE_ALL`.
-&nbsp;
+&nbsp;  
 
 ##### usCavalry #####
 Unable to: 

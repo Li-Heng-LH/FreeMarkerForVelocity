@@ -1,6 +1,11 @@
 <html>
 
     <body style="padding: 10px; padding-left: 12px; margin: 0px; color: black; font-size:14px; font-family: Verdana, Sans Serif">
+
+    #global()
+    #myMacro()
+
+
     <table style="width: 100%">
         <tr>
             #if ($didPass)
@@ -61,6 +66,13 @@
 
             </td></tr>
     </table>
+
+    #set( $greatlakes = ["Superior","Michigan","Huron","Erie","Ontario"] )
+    #set( $color = "blue" )
+    <table>
+        #tablerows( $color $greatlakes )
+    </table>
+
     </body>
 
 </html>
