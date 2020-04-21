@@ -86,6 +86,19 @@ Another example: org.apache.commons.lang3.StringUtils: StringUtils instances sho
 * Way 4 has even **more security implications**, as someone could even invoke `System.exit()` using this model if the method exposure level is weakened to `EXPOSE_ALL`.
 &nbsp;
 
+##### usCavalry #####
+Unable to: 
+1. Cannot identify color #
+2. Cannot parse to use built-in's
+3. foreach cannot parse to list   
+
+Able to:
+1. Parse if else quite well 
+2. comments parsed well
+3. set parse to assign
+4. remove the $ sign well
+&nbsp;
+
 &nbsp;
 ----
 ### Useful links ###
@@ -101,3 +114,4 @@ Another example: org.apache.commons.lang3.StringUtils: StringUtils instances sho
 * [Java Properties](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html)
 
 
+* [usCavalry: Migrating from Velocity](https://freemarker.sourceforge.io/usCavalry.html)

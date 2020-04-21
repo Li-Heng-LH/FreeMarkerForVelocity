@@ -48,7 +48,7 @@ public class TableHtmlWriter {
 
 
         /* Get the template (uses cache internally) */
-        Template temp = cfg.getTemplate("table.ftl");
+        Template temp = cfg.getTemplate("errorFixed.ftl");
 
         /* Merge data-model with template */
         StringWriter stringWriter = new StringWriter();
