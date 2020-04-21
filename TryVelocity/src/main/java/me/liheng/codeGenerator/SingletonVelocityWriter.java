@@ -16,6 +16,7 @@ public class SingletonVelocityWriter {
     private static void initialiseVelocity1() {
         Properties properties = new Properties();
         properties.setProperty("file.resource.loader.path","src/main/resources/vtemplates");
+        properties.setProperty("velocimacro.library","VM_global_library.vm,myMacro.vm");
 
         //initialize the Velocity engine Singleton
         Velocity.init(properties);
@@ -23,7 +24,7 @@ public class SingletonVelocityWriter {
 
     private static void initialiseVelocity2() {
         Velocity.setProperty("file.resource.loader.path","src/main/resources/vtemplates");
-
+        Velocity.setProperty("velocimacro.library","VM_global_library.vm,myMacro.vm");
         //initialize the Velocity engine Singleton
         Velocity.init();
     }

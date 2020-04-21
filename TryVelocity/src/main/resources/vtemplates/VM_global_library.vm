@@ -1,0 +1,6 @@
+#macro( global )
+<div style="color:blue">
+<h2> This is from global macro! </h2>
+<p>macro macro macro macro</p>
+</div>
+#end

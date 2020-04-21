@@ -1,0 +1,6 @@
+#macro( myMacro )
+<div style="color:green">
+<h2> This is from MY macro! </h2>
+<p> My Macro</p>
+</div>
+#end
