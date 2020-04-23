@@ -17,27 +17,32 @@
         modelColNum = NumberOfColumnsInReport - 3 >
 
         <tr><td>
-            <#if summary?size == 0 >
+            <#if summary?api.size() == 0 >
                 <th style="height:60px"> Summary cannot be retrieved</th>
             <#else>
 
-
-
-                <#--  <#assign StringUtils = statics['me.liheng.codeGenerator.StringUtils'] > -->
-                <#--  <#assign Math = statics['java.lang.Math'] > -->
-
-
-
-                <#assign summaryHeader = summary?first >
+                <#assign summaryHeader = summary?api.remove(0) >
                 <#assign summaryHeaderTokens = StringUtils.trimmedSplit(summaryHeader, ",") >
 
+
                 <#-- ******** To be removed ******** -->
+
+                <ul>
                 <#list summaryHeaderTokens as token>
-                <h2> ${token} </h2>
+                <li> ${token} </li>
                 </#list>
+                </ul>
 
                 <h3> ${Math.random()}</h3>
                  <#-- ************************ -->
+
+
+                <ul>
+                    <#list summary as row>
+                    <li> ${row} </li>
+                    </#list>
+                </ul>
+
 
             </#if>
 

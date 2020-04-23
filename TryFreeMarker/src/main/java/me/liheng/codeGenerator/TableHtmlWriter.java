@@ -13,16 +13,10 @@ public class TableHtmlWriter {
 
     public static void write() throws IOException, TemplateException {
 
-        List <String> summary = readCSV();
-        String summaryHeader = summary.remove(0);
-        List <String> summaryBody = summary;
-
         /* Create a data-model */
         Map root = new HashMap();
         root.put("didPass", true);
-        root.put("summary",summary);
-        root.put("summaryHeader", summaryHeader);
-        root.put("summaryBody", summaryBody);
+        root.put("summary",readCSV());
 
         //root.put("Math",new java.lang.Math()); //Error: java.lang.Math cannot be initialised: constructor is private
 
@@ -48,7 +42,7 @@ public class TableHtmlWriter {
 
 
         /* Get the template (uses cache internally) */
-        Template temp = cfg.getTemplate("tableWithMacro.ftl");
+        Template temp = cfg.getTemplate("try.ftl");
 
         /* Merge data-model with template */
         StringWriter stringWriter = new StringWriter();

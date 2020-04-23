@@ -24,6 +24,7 @@ public class ConfigurationSingleton {
             instance.setLogTemplateExceptions(false);
             instance.setWrapUncheckedExceptions(true);
             instance.setFallbackOnNullLoopVariable(false);
+            instance.setAPIBuiltinEnabled(true);
         }
 
         return instance;

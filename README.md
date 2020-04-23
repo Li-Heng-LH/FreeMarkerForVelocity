@@ -90,6 +90,8 @@ Another example: org.apache.commons.lang3.StringUtils: StringUtils instances sho
 ### Important: 2 ways to invoke Java API of List ###
 1. `BeansWrapper.getDefaultInstance().wrap();` ([Reference](https://freemarker.apache.org/docs/pgui_misc_beanwrapper.html))
 2. `value?api.someJavaMethod()` ([Reference](https://freemarker.apache.org/docs/versions_2_3_22.html))
+##### value?api.someJavaMethod() #####
+* 
 &nbsp;  
 &nbsp;  
 
