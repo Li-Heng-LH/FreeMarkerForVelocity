@@ -91,19 +91,30 @@ Another example: org.apache.commons.lang3.StringUtils: StringUtils instances sho
 1. `BeansWrapper.getDefaultInstance().wrap();` ([Reference](https://freemarker.apache.org/docs/pgui_misc_beanwrapper.html))
 2. `value?api.someJavaMethod()` ([Reference](https://freemarker.apache.org/docs/versions_2_3_22.html))
 ##### value?api.someJavaMethod() #####
-* Need to setAPIBuiltinEnabled to true. 
+1. setAPIBuiltinEnabled to true in Configuration setting.
+2. In FTL file, use summary?api.remove().   
 * **Yes, the original object will be modified. (Eg, remove() can modify)**
-* Does not work for static methods if I pass in a utility class. 
+* Does **NOT** work for static methods if I pass in `StringUtils.class` and use `StringUtils?api.trimmedSplit()`.
 &nbsp;
 ##### BeansWrapper.getDefaultInstance().wrap() #####
-*   
+1. `root.put("summary",BeansWrapper.getDefaultInstance().wrap(readCSV()));`
+2. In FTL file, just use summary.remove()
+* Works for summary.size()
+* Does not work for summary.remove()  
+Multiple compatible overloaded variations were found with the same priority.  
+The FTL type of the argument values were: number (wrapper: f.t.SimpleNumber).  
+The Java type of the argument values were: java.math.BigDecimal.  
+The matching overload was searched among these members:  
+    ArrayList.remove(int),   
+    ArrayList.remove(Object)  
+* `root.put("StringUtils",BeansWrapper.getDefaultInstance().wrap(StringUtils.class));` doe **not** work for static methods. 
 &nbsp;  
 
 #### Summary ####
 1. Cannot use summary.size() : `For "." left-hand operand: Expected a hash, but this has evaluated to a sequence (ArrayList wrapped into f.t.DefaultListAdapter)` 
 2. Use `summary?api.size();`
 3. value?api.someJavaMethod() does not work for static methods for utility classes.   
-StringUtils.trimmedSplit:  has evaluated to null or missing
+`StringUtils.trimmedSplit:  has evaluated to null or missing`
 4. Use `BeansWrapper.getStaticModels()`
 
 
