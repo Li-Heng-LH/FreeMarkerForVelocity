@@ -91,7 +91,8 @@ Another example: org.apache.commons.lang3.StringUtils: StringUtils instances sho
 1. `BeansWrapper.getDefaultInstance().wrap();` ([Reference](https://freemarker.apache.org/docs/pgui_misc_beanwrapper.html))
 2. `value?api.someJavaMethod()` ([Reference](https://freemarker.apache.org/docs/versions_2_3_22.html))
 ##### value?api.someJavaMethod() #####
-* 
+* Need to setAPIBuiltinEnabled to true. 
+* Yes, the original object will be modified. (Eg, remove() can modify)
 &nbsp;  
 &nbsp;  
 
