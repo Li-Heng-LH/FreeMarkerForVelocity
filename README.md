@@ -92,23 +92,48 @@ Another example: org.apache.commons.lang3.StringUtils: StringUtils instances sho
 2. `value?api.someJavaMethod()` ([Reference](https://freemarker.apache.org/docs/versions_2_3_22.html))
 ##### value?api.someJavaMethod() #####
 * Need to setAPIBuiltinEnabled to true. 
-* Yes, the original object will be modified. (Eg, remove() can modify)
-&nbsp;  
+* **Yes, the original object will be modified. (Eg, remove() can modify)**
+* Does not work for static methods if I pass in a utility class. 
+&nbsp;
+##### BeansWrapper.getDefaultInstance().wrap() #####
+*   
 &nbsp;  
 
+#### Summary ####
+1. Cannot use summary.size() : `For "." left-hand operand: Expected a hash, but this has evaluated to a sequence (ArrayList wrapped into f.t.DefaultListAdapter)` 
+2. Use `summary?api.size();`
+3. value?api.someJavaMethod() does not work for static methods for utility classes.   
+StringUtils.trimmedSplit:  has evaluated to null or missing
+4. Use `BeansWrapper.getStaticModels()`
+
+
+&nbsp;  
+&nbsp; 
 ##### usCavalry #####
-Unable to: 
-1. Cannot identify color #
-2. Cannot parse to use built-in's
-3. foreach cannot parse to list  
-4. parse calling of macro 
+<table>
+    <tr><th> usCavalry </th></tr>
+</table>
+<table>
+    <tr>
+        <th> Can: </th>
+        <th> Cannot: </th>
+    </tr>
+    <tr>
+        <td><ol>
+            <li> Parse if else quite well </li>
+            <li> Parse comments well </li>
+            <li> Parse set to assign </li>
+            <li> Remove the $ sign well </li>
+        </ol></td>
+        <td><ol>
+            <li> Cannot identify color # </li>
+            <li> Cannot parse to use built-in's </li>
+            <li> Cannot parse to use built-in's </li>
+            <li> foreach cannot parse to list </li>
+        </ol></td>
+    </tr>        
+</table>
 
-Able to:
-1. Parse if else quite well 
-2. comments parsed well
-3. set parse to assign
-4. remove the $ sign well
-5. parse macro file
 &nbsp;
 
 &nbsp;
@@ -123,7 +148,6 @@ Able to:
 * [javatpoint: JavaMail Tutorial](https://www.javatpoint.com/java-mail-api-tutorial)
 * [Google SMTP Server – How to Send Emails for Free](https://www.siteground.com/kb/google_free_smtp_server/)
 * [tutorialspoint: Java - Sending Email](https://www.tutorialspoint.com/java/java_sending_email.htm)
-* [Java Properties](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html)
-
-
+* [Java Properties](https://docs.oracle.com/javase/tutorial/essential/environment/properties.html)  
+&nbsp;  
 * [usCavalry: Migrating from Velocity](https://freemarker.sourceforge.io/usCavalry.html)
