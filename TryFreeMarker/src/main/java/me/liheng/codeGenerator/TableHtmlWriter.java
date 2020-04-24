@@ -17,6 +17,12 @@ public class TableHtmlWriter {
         Map root = new HashMap();
         root.put("didPass", true);
         root.put("summary",readCSV());
+        List<String> listOfLanguages = new ArrayList<>();
+        listOfLanguages.add("Java");
+        listOfLanguages.add("Python");
+        listOfLanguages.add("C++");
+        listOfLanguages.add("Ruby");
+        root.put("listOfLanguages", listOfLanguages);
 
         //root.put("Math",new java.lang.Math()); //Error: java.lang.Math cannot be initialised: constructor is private
 
@@ -42,7 +48,7 @@ public class TableHtmlWriter {
 
 
         /* Get the template (uses cache internally) */
-        Template temp = cfg.getTemplate("try.ftl");
+        Template temp = cfg.getTemplate("tableWithMacro.ftl");
 
         /* Merge data-model with template */
         StringWriter stringWriter = new StringWriter();

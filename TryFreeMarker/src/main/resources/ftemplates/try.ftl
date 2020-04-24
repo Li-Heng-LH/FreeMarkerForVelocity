@@ -5,9 +5,7 @@
     <#import "myMacro.ftl" as myMacroFile>
     <@myMacroFile.myMacro/>
     <#assign greatlakes = ["Superior","Michigan","Huron","Erie","Ontario"]>
-    <table>
     <@myMacroFile.tablerows color = "blue" somelist = greatlakes/>
-    </table>
 
     <table style="width: 100%">
         <tr>

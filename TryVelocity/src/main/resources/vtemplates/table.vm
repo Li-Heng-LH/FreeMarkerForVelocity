@@ -1,6 +1,7 @@
 <html>
 
     <body style="padding: 10px; padding-left: 12px; margin: 0px; color: black; font-size:14px; font-family: Verdana, Sans Serif">
+
     <table style="width: 100%">
         <tr>
             #if ($didPass)

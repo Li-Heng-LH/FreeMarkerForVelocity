@@ -17,9 +17,10 @@
         modelColNum = NumberOfColumnsInReport - 3 >
 
         <tr><td>
-            <#if summary?size == 0 >
+            <#if summary?api.size() == 0 >
                 <th style="height:60px"> Summary cannot be retrieved</th>
             <#else>
+                <#assign summaryHeader = summary?api.remove(0)>
                 <#assign summaryHeaderTokens = StringUtils.trimmedSplit(summaryHeader, ",") >
 
                 <table style="border: 1px solid black; border-collapse: collapse; width: 100%; font-size:100%">
@@ -36,7 +37,7 @@
 
                     <tbody>
                     <#-- Add detail Rows -->
-                    <#list summaryBody as line >
+                    <#list summary as line >
 
                         <#assign summaryLineTokens = StringUtils.trimmedSplit(line, ",") >
 
@@ -64,6 +65,16 @@
 
             </td></tr>
     </table>
+
+    <#import "myMacro.ftl" as myMacroFile>
+    <#import "globalMacro.ftl" as globalMacroFile>
+    <@globalMacroFile.globalMacro/>
+    <@myMacroFile.myMacro/>
+    <#assign greatlakes = ["Superior","Michigan","Huron","Erie","Ontario"]>
+    <#assign color = "red" >
+    <@myMacroFile.tablerows color = "blue" somelist = greatlakes/>
+    <@myMacroFile.tablerows color = color somelist = listOfLanguages/>
+
     </body>
 
 </html>

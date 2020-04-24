@@ -7,7 +7,9 @@
 
 
 <#macro tablerows color somelist>
+<table>
  <#list somelist as something >
      <tr><td bgcolor=${color}>${something}</td></tr>
  </#list>
+</table>
 </#macro>
