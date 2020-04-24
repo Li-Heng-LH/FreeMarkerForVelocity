@@ -10,6 +10,8 @@ import java.util.List;
 
 public class TableHtmlWriter {
 
+    private static final String TEMPLATE_TO_USE = "tableWithMacro.vm";
+
     public static void write() throws IOException {
         //Initialise the velocity context
         VelocityContext context = new VelocityContext();
@@ -23,7 +25,7 @@ public class TableHtmlWriter {
         listOfLanguages.add("Ruby");
         context.put("listOfLanguages", listOfLanguages);
 
-        Template template = Velocity.getTemplate("tableWithMacro.vm");
+        Template template = Velocity.getTemplate(TEMPLATE_TO_USE);
         StringWriter stringWriter = new StringWriter();
         template.merge(context, stringWriter);
 

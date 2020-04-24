@@ -11,6 +11,8 @@ import java.util.Map;
 
 public class TableHtmlWriter {
 
+    private static final String TEMPLATE_TO_USE = "tableWithMacro.ftl";
+
     public static void write() throws IOException, TemplateException {
 
         /* Create a data-model */
@@ -48,7 +50,7 @@ public class TableHtmlWriter {
 
 
         /* Get the template (uses cache internally) */
-        Template temp = cfg.getTemplate("tableWithMacro.ftl");
+        Template temp = cfg.getTemplate(TEMPLATE_TO_USE);
 
         /* Merge data-model with template */
         StringWriter stringWriter = new StringWriter();
