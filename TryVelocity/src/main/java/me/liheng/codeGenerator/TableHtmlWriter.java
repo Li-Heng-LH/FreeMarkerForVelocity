@@ -16,8 +16,14 @@ public class TableHtmlWriter {
         context.put("didPass", true);
         context.put("summary", readCSV());
         context.put("StringUtils", StringUtils.class);
+        List<String> listOfLanguages = new ArrayList<>();
+        listOfLanguages.add("Java");
+        listOfLanguages.add("Python");
+        listOfLanguages.add("C++");
+        listOfLanguages.add("Ruby");
+        context.put("listOfLanguages", listOfLanguages);
 
-        Template template = Velocity.getTemplate("table.vm");
+        Template template = Velocity.getTemplate("tableWithMacro.vm");
         StringWriter stringWriter = new StringWriter();
         template.merge(context, stringWriter);
 
