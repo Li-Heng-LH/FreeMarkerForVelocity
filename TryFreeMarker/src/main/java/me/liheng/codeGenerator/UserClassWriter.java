@@ -43,7 +43,7 @@ public class UserClassWriter {
         //Write to file
         FileWriter fw = null;
         try {
-            fw = new FileWriter("out/User.java");
+            fw = new FileWriter("output/User.java");
             fw.write(stringWriter.toString());
         } finally {
             if (fw != null) {

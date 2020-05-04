@@ -2,7 +2,8 @@
 # Project Specific
 ######################
 config.properties
-out/*
+**/output/*
+!placeholder.md
 
 ######################
 # Node

@@ -39,7 +39,7 @@ public class ProductClassWriter {
         //Write to file
         FileWriter fw = null;
         try {
-            fw = new FileWriter("out/Product.java");
+            fw = new FileWriter("output/Product.java");
             fw.write(stringWriter.toString());
         } finally {
             if (fw != null) {

@@ -32,7 +32,7 @@ public class TableHtmlWriter {
         //Write to file
         FileWriter fw = null;
         try {
-            fw = new FileWriter("out/table.html");
+            fw = new FileWriter("output/table.html");
             fw.write(stringWriter.toString());
         } finally {
             if (fw != null) {
