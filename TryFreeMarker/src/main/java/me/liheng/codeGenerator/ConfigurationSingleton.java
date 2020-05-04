@@ -17,7 +17,7 @@ public class ConfigurationSingleton {
         if(instance == null) {
 
             instance = new Configuration(Configuration.VERSION_2_3_30);
-            instance.setDirectoryForTemplateLoading(new File("/Users/liheng/OneDrive/FreeMarkerForVelocity/TryFreeMarker/src/main/resources/ftemplates"));
+            instance.setDirectoryForTemplateLoading(new File("src/main/resources/ftemplates"));
             // Recommended settings for new projects:
             instance.setDefaultEncoding("UTF-8");
             instance.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);

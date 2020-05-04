@@ -139,8 +139,8 @@ The matching overload was searched among these members:
         <td><ol>
             <li> Cannot identify color # </li>
             <li> Cannot parse to use built-in's </li>
-            <li> Cannot parse to use built-in's </li>
             <li> foreach cannot parse to list </li>
+            <li> Cannot parse macros </li>
         </ol></td>
     </tr>        
 </table>
