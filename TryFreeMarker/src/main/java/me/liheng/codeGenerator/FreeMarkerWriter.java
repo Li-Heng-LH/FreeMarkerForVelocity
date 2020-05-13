@@ -7,6 +7,6 @@ import java.io.IOException;
 public class FreeMarkerWriter {
 
     public static void main(String[] args) throws IOException, TemplateException {
-        StringWriterTest.run();
+        CsvWriter.write();
     }
 }

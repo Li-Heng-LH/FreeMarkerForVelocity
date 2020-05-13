@@ -1,0 +1,4 @@
+#foreach($row in $csv)
+#foreach($column in $row)$column,#end
+
+#end

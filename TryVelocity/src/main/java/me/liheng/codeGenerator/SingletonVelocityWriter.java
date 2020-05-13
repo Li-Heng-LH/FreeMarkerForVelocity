@@ -9,7 +9,7 @@ public class SingletonVelocityWriter {
 
     public static void main(String[] args) throws IOException {
         initialiseVelocity2();
-        TableHtmlWriter.write();
+        CsvWriter.write();
     }
 
 
