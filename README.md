@@ -116,9 +116,13 @@ The matching overload was searched among these members:
 3. value?api.someJavaMethod() does not work for static methods for utility classes.   
 `StringUtils.trimmedSplit:  has evaluated to null or missing`
 4. Use `BeansWrapper.getStaticModels()`
+&nbsp;
 
-
-&nbsp;  
+#### Some Q&A ####
+* Q: Can I keep resetting FreeMarker Configuration DirectoryForTemplateLoading for different needs?   
+  A: Yes. 
+&nbsp;
+  
 &nbsp; 
 ##### usCavalry #####
 <table>
