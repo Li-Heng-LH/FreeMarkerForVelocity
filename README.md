@@ -121,6 +121,9 @@ The matching overload was searched among these members:
 #### Some Q&A ####
 * Q: Can I keep resetting FreeMarker Configuration DirectoryForTemplateLoading for different needs?   
   A: Yes. 
+  
+* Q: Can I keep calling StringWriter.toString() ?  
+  A: Yes.
 &nbsp;
   
 &nbsp; 

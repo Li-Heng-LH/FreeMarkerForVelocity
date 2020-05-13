@@ -7,7 +7,6 @@ import java.io.IOException;
 public class FreeMarkerWriter {
 
     public static void main(String[] args) throws IOException, TemplateException {
-        ChangeDirectoryWriter.writeGreen();
-        ChangeDirectoryWriter.writeBlue();
+        StringWriterTest.run();
     }
 }
