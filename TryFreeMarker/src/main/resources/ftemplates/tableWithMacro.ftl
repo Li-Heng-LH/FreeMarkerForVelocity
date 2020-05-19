@@ -73,7 +73,7 @@
     <#assign greatlakes = ["Superior","Michigan","Huron","Erie","Ontario"]>
     <#assign color = "red" >
     <@myMacroFile.tablerows color = "blue" somelist = greatlakes/>
-    <@myMacroFile.tablerows color = color somelist = listOfLanguages/>
+    <@myMacroFile.tablerows color listOfLanguages/>
 
     <@myMacroFile.greet "Hey there"/>
 
