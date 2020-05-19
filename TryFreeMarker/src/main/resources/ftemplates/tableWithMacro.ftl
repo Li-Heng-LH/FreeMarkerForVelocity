@@ -75,6 +75,8 @@
     <@myMacroFile.tablerows color = "blue" somelist = greatlakes/>
     <@myMacroFile.tablerows color = color somelist = listOfLanguages/>
 
+    <@myMacroFile.greet "Hey there"/>
+
     </body>
 
 </html>

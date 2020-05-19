@@ -13,3 +13,7 @@
  </#list>
 </table>
 </#macro>
+
+<#macro greet person>
+  <font size="+2">Hello ${person}!</font>
+</#macro>
