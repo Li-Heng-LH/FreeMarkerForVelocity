@@ -66,10 +66,12 @@
             </td></tr>
     </table>
 
+    <#include "globalMacro.ftl">
+    <@globalMacro/>
+
     <#import "myMacro.ftl" as myMacroFile>
-    <#import "globalMacro.ftl" as globalMacroFile>
-    <@globalMacroFile.globalMacro/>
     <@myMacroFile.myMacro/>
+
     <#assign greatlakes = ["Superior","Michigan","Huron","Erie","Ontario"]>
     <#assign color = "red" >
     <@myMacroFile.tablerows color = "blue" somelist = greatlakes/>
